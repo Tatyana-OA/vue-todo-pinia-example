@@ -22,6 +22,12 @@ export const useTodoListStore = defineStore("todoList", {
         toDo.completed = !toDo.completed;
       }
     },
+    deleteTodo(id) {
+      const toDo = this.todoList.find((i) => i.id === id);
+      if (toDo) {
+        this.todoList.splice(this.todoList.indexOf(toDo), 1);
+      }
+    },
   },
   //getters
 });

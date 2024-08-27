@@ -10,4 +10,11 @@ import ToDoList from "./ToDoList.vue";
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.todo-app {
+  padding: 5vh;
+  min-height: 100vh;
+  width: 50%;
+  background-color: #f7f9fc;
+}
+</style>

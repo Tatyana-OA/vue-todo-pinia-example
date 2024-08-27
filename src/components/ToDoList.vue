@@ -6,30 +6,35 @@ const store = useTodoListStore();
 
 // creates refs from each of the properties, ensuring reactivity
 const { todoList } = storeToRefs(store);
-const { toggleCompleted } = store;
+const { toggleCompleted, deleteTodo } = store;
 </script>
 <template>
-  <div>
-    <div v-for="todo in todoList" :key="todo.id" class="item">
-      <div class="content">
-        <span :class="{ completed: todo.completed }">{{ todo.item }}</span>
-        <span @click.stop="toggleCompleted(todo.id)" class="check"
-          >&#10004;</span
-        >
-      </div>
+  <div v-for="todo in todoList" :key="todo.id">
+    <div>
+      <span :class="{ completed: todo.completed }">{{ todo.item }}</span>
+      <span @click.stop="toggleCompleted(todo.id)">&#10004;</span>
+      <span @click="deleteTodo(todo.id)">&#10060;</span>
     </div>
   </div>
 </template>
 
 <style scoped>
-.completed {
-  text-decoration: line-through;
+span {
+  margin: 0 10px;
+  cursor: pointer;
+}
+.item {
+  display: flex;
+  justify-content: center;
 }
 .content {
   display: flex;
-  gap: 0.5rem;
+  font-size: 1.5em;
+  justify-content: space-between;
+  width: 80vw;
+  padding: 5px;
 }
-.check {
-  cursor: pointer;
+.completed {
+  text-decoration: line-through;
 }
 </style>
