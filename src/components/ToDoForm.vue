@@ -11,7 +11,7 @@ function addItemandClear(item) {
   if (item.length === 0) {
     return;
   }
-  store.addToDo(item);
+  store.addTodo(item);
   todo.value = "";
 }
 </script>
